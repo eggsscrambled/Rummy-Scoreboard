@@ -17,6 +17,7 @@ class MainWindow(QMainWindow):
 
 
         self.addPlayerButton.clicked.connect(self.AddPlayer)
+        self.removePlayerButton.clicked.connect(self.RemovePlayer)
 
     def AddPlayer(self):
         global players
@@ -27,6 +28,21 @@ class MainWindow(QMainWindow):
 
         self.playerList.addItem(playerToRegister.name)      #Add name to list
         self.playerRegisterBox.clear()  #Clear input box
+
+
+    def RemovePlayer(self):
+        global players
+        item = self.playerList.currentItem()
+        name = item.text()
+
+        for player in players:
+            if name == player.name:
+                playerToRemove = player
+
+        players.remove(playerToRemove)
+        index = self.playerList.currentRow()
+        self.playerList.takeItem(index)
+
 
 app = QApplication(sys.argv)
 window = MainWindow()

@@ -1,5 +1,6 @@
 class Player:
 
+
     def __init__(self, name): # Function to create a new player
         self.name = name
         self.score = 0
@@ -11,3 +12,5 @@ class Player:
 
     def GetCurrentScore(self): # Returns the players current score
         return self.score
+
+
