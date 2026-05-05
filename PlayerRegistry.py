@@ -15,6 +15,7 @@ class MainWindow(QMainWindow):
         print()
         uic.loadUi("PlayerInput.ui", self)
 
+        self.playerRegisterBox.setMaxLength(20)
 
         self.addPlayerButton.clicked.connect(self.AddPlayer)    #Add player button
         self.removePlayerButton.clicked.connect(self.RemovePlayer)  #Remove player button
@@ -23,7 +24,7 @@ class MainWindow(QMainWindow):
         global players
         NameUsed = False
 
-        name = self.playerRegisterBox.toPlainText().strip() #Get name to text and remove whitespace
+        name = self.playerRegisterBox.text().strip() #Get name to text and remove whitespace
         name = name.capitalize() #Format name
 
         if name != "":  #Ensure name cannot be empty
