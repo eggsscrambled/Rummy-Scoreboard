@@ -24,10 +24,10 @@ class MainWindow(QMainWindow):
         NameUsed = False
 
         name = self.playerRegisterBox.toPlainText().strip() #Get name to text and remove whitespace
+        name = name.capitalize() #Format name
 
-        
+        if name != "":  #Ensure name cannot be empty
 
-        if name != "":  #Esnure name cannot be empty
 
             for i in range (len(players)):
                 nameToCheck = players[i].name   #Loop through player list and make sure that name is unique
