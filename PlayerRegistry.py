@@ -20,6 +20,9 @@ class MainWindow(QMainWindow):
         self.addPlayerButton.clicked.connect(self.AddPlayer)    #Add player button
         self.removePlayerButton.clicked.connect(self.RemovePlayer)  #Remove player button
 
+
+
+
     def AddPlayer(self):
         global players
         NameUsed = False
@@ -47,18 +50,23 @@ class MainWindow(QMainWindow):
                 NameUsed = False
 
 
+
+
     def RemovePlayer(self):
         global players
-        item = self.playerList.currentItem()    #Get the name of the selected item
-        name = item.text()
 
-        for player in players:
-            if name == player.name:     #Find the correct instance of Player to remove using names in list
-                playerToRemove = player
+        if self.playerList.currentItem() != None:
 
-        players.remove(playerToRemove)  #Remove from internal player list
-        index = self.playerList.currentRow()
-        self.playerList.takeItem(index) #Remove from UI list
+            item = self.playerList.currentItem()    #Get the name of the selected item
+            name = item.text()
+
+            for player in players:
+                if name == player.name:     #Find the correct instance of Player to remove using names in list
+                    playerToRemove = player
+
+            players.remove(playerToRemove)  #Remove from internal player list
+            index = self.playerList.currentRow()
+            self.playerList.takeItem(index) #Remove from UI list
 
 
 app = QApplication(sys.argv)
