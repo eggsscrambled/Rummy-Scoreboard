@@ -21,14 +21,28 @@ class MainWindow(QMainWindow):
 
     def AddPlayer(self):
         global players
-        name = self.playerRegisterBox.toPlainText().strip()
+        NameUsed = False
+
+        name = self.playerRegisterBox.toPlainText().strip() #Get name to text and remove whitespace
+
+        
+
         if name != "":  #Esnure name cannot be empty
-            playerToRegister = Player(name)
 
-            players.append(playerToRegister)    #Add instance of player to global array
+            for i in range (len(players)):
+                nameToCheck = players[i].name   #Loop through player list and make sure that name is unique
+                if(nameToCheck == name):
+                    NameUsed = True
 
-            self.playerList.addItem(playerToRegister.name)      #Add name to list
-            self.playerRegisterBox.clear()  #Clear input box
+            if(NameUsed == False):  #If name is truly unique then add it to the list
+                playerToRegister = Player(name)
+
+                players.append(playerToRegister)    #Add instance of player to global array
+
+                self.playerList.addItem(playerToRegister.name)      #Add name to list
+                self.playerRegisterBox.clear()  #Clear input box
+            else:
+                NameUsed = False
 
 
     def RemovePlayer(self):
