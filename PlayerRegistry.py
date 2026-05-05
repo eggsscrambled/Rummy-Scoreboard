@@ -25,7 +25,8 @@ class MainWindow(QMainWindow):
         NameUsed = False
 
         name = self.playerRegisterBox.text().strip() #Get name to text and remove whitespace
-        name = name.capitalize() #Format name
+        name = name.title() #Format name
+
 
         if name != "":  #Ensure name cannot be empty
 
